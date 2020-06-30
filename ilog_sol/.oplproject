@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?><project>
+	<version>1.0</version>
+	<description>ilog implementation</description>
+	<configs>
+		<config default="false" name="cfg_test" category="opl">
+			<ref name="test.mod" type="model">
+			</ref>
+		</config>
+		<config default="true" name="cfg_sizes" category="opl">
+			<ref name="ilog_sol_sizes.dat" type="data">
+			</ref>
+			<ref name="ilog_sol_sizes.mod" type="model">
+			</ref>
+		</config>
+	</configs>
+	
+</project>

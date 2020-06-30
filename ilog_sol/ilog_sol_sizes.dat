@@ -1,0 +1,20 @@
+/*********************************************
+ * OPL 12.9.0.0 Data
+ * Author: VOEV
+ * Creation Date: Jun 27, 2020 at 4:37:54 PM
+ *********************************************/
+
+ SheetConnection connRooms ("../data/rooms_lin_sizes.xlsx");
+ SheetConnection connMainRoom ("../data/main_room.xlsx");
+ 
+len_dat from SheetRead(connRooms, "A2:B6");
+wid_dat from SheetRead(connRooms, "C2:D6");
+
+len from SheetRead(connMainRoom, "B1:B1");
+wid from SheetRead(connMainRoom, "B2:B2");
+
+// write data
+ 
+ SheetConnection connResult ("../data/sol_lin_sizes.xlsx");
+ 
+ solution to SheetWrite(connResult, "A2:D10000");
