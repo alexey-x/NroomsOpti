@@ -1,5 +1,5 @@
 # NroomsOpti
-Fill rectangular space (big rooms) by N smaller rooms of varibles or fixed sizes.
+Fill rectangular space (big room) by N smaller rooms of variable or fixed sizes.
 It is non convex, nonlinear optimization task solved with ILOG. 
 
 ## Task, assumptions and data
