@@ -6,7 +6,7 @@
 
 // important to solve non convex MIQP
 execute CPX_PARAM {
-	cplex.optimalitytarget = 3;
+	//cplex.optimalitytarget = 3;
 }
 
  tuple size_t {
@@ -50,7 +50,10 @@ dvar boolean bx[Nroom][Nroom]; // need for no intersection condition
 dvar boolean by[Nroom][Nroom]; // need for no intersection condition
 
 // non convex 
-dexpr float objective = sum(i in Nroom) (dx[i] * dy[i]);
+//dexpr float objective = sum(i in Nroom) (dx[i] * dy[i]);
+
+// perimeter
+dexpr float objective = sum(i in Nroom) (dx[i] + dy[i]);
 
 maximize objective;
 
@@ -101,3 +104,14 @@ tuple out_t {
 	union
 	{<i, x[i], y[i]+dy[i], 0.> | i in Nroom}
 ;
+
+execute PRINT_AREA
+{
+	var area = 0;
+	for(var i in Nroom)
+	{
+		writeln(i, "area =  ", dx[i]*dy[i]);
+		area +=  dx[i]*dy[i]	
+	}
+	writeln("Total area: ", area);
+}
