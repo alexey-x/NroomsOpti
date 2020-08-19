@@ -5,8 +5,10 @@
  *********************************************/
 
 // important to solve non convex MIQP
-execute CPX_PARAM {
-	//cplex.optimalitytarget = 3;
+
+execute CPX_PARAM 
+{
+	cplex.optimalitytarget = 3;
 }
 
  tuple size_t {
@@ -38,6 +40,11 @@ execute fill_sizes {
 	}
 }
 
+
+// perimeter
+//dexpr float objective = sum(i in Nroom) (dx[i] + dy[i]);
+
+
 // ---  model ----
 
 dvar float+ x[Nroom]; // x-- use with length
@@ -45,15 +52,11 @@ dvar float+ dx[Nroom];
 dvar float+ y[Nroom]; // y -- use with width
 dvar float+ dy[Nroom]; 
 
-
 dvar boolean bx[Nroom][Nroom]; // need for no intersection condition
 dvar boolean by[Nroom][Nroom]; // need for no intersection condition
 
 // non convex 
-//dexpr float objective = sum(i in Nroom) (dx[i] * dy[i]);
-
-// perimeter
-dexpr float objective = sum(i in Nroom) (dx[i] + dy[i]);
+dexpr float objective = sum(i in Nroom) (dx[i] * dy[i]);
 
 maximize objective;
 

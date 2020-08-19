@@ -4,6 +4,7 @@
  * Creation Date: Jun 27, 2020 at 10:51:37 AM
  *********************************************/
 
+
  range Nroom = 1..3;
  
  tuple ix_t {
