@@ -40,11 +40,6 @@ execute fill_sizes {
 	}
 }
 
-
-// perimeter
-//dexpr float objective = sum(i in Nroom) (dx[i] + dy[i]);
-
-
 // ---  model ----
 
 dvar float+ x[Nroom]; // x-- use with length
@@ -95,26 +90,9 @@ tuple out_t {
 	int room;
 	float x;
 	float y;
+	float dx;
+	float dy;
 	float a;
 }
 
-{out_t} solution = 
-	{<i, x[i], y[i], dx[i]*dy[i]> | i in Nroom}
-	union
-	{<i, x[i]+dx[i], y[i], 0.> | i in Nroom}
-	union
-	{<i, x[i]+dx[i], y[i]+dy[i], 0.> | i in Nroom}
-	union
-	{<i, x[i], y[i]+dy[i], 0.> | i in Nroom}
-;
-
-execute PRINT_AREA
-{
-	var area = 0;
-	for(var i in Nroom)
-	{
-		writeln(i, "area =  ", dx[i]*dy[i]);
-		area +=  dx[i]*dy[i]	
-	}
-	writeln("Total area: ", area);
-}
+{out_t} solution = {<i, x[i], y[i], dx[i], dy[i], dx[i]*dy[i]> | i in Nroom};

@@ -17,4 +17,4 @@ wid from SheetRead(connMainRoom, "B2:B2");
  
  SheetConnection connResult ("../data/sol_lin_sizes.xlsx");
  
- solution to SheetWrite(connResult, "A2:D10000");
+ solution to SheetWrite(connResult, "A2:F10000");
